@@ -18,260 +18,126 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body {
-    background:var(--black); color:var(--white);
-    font-family:'Barlow',sans-serif; min-height:100vh; overflow-x:hidden;
-  }
-  .glow-1 {
-    position:fixed; top:-350px; right:-350px;
-    width:1000px; height:1000px;
-    background:radial-gradient(circle, rgba(232,84,42,0.38) 0%, rgba(180,40,10,0.22) 30%, transparent 68%);
-    pointer-events:none; z-index:0;
-    animation:pulse1 6s ease-in-out infinite;
-  }
-  .glow-2 {
-    position:fixed; bottom:-350px; left:-200px;
-    width:750px; height:750px;
-    background:radial-gradient(circle, rgba(200,55,15,0.22) 0%, transparent 65%);
-    pointer-events:none; z-index:0;
-    animation:pulse2 9s ease-in-out infinite;
-  }
+  body { background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; min-height:100vh; overflow-x:hidden; }
+  .glow-1 { position:fixed; top:-350px; right:-350px; width:1000px; height:1000px; background:radial-gradient(circle, rgba(232,84,42,0.38) 0%, rgba(180,40,10,0.22) 30%, transparent 68%); pointer-events:none; z-index:0; animation:pulse1 6s ease-in-out infinite; }
+  .glow-2 { position:fixed; bottom:-350px; left:-200px; width:750px; height:750px; background:radial-gradient(circle, rgba(200,55,15,0.22) 0%, transparent 65%); pointer-events:none; z-index:0; animation:pulse2 9s ease-in-out infinite; }
   @keyframes pulse1 { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.78;transform:scale(1.07)} }
   @keyframes pulse2 { 0%,100%{opacity:0.8;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
-  body::after {
-    content:''; position:fixed; inset:0;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events:none; z-index:0; opacity:0.45;
-  }
+  body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.45; }
   .container { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px; }
 
   /* HERO */
   .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:100px 0 80px; }
-  .eyebrow {
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700;
-    letter-spacing:0.25em; text-transform:uppercase; color:var(--orange); margin-bottom:36px;
-  }
-  .eyebrow::before { content:''; display:block; width:24px; height:1px; background:var(--orange); }
-  .hero h1 {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(64px,12vw,110px); font-weight:900;
-    line-height:0.88; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:36px;
-  }
+  .hero h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(64px,12vw,110px); font-weight:900; line-height:0.88; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:36px; }
   .hero h1 .accent { color:var(--orange); }
-  .hero-desc {
-    font-size:17px; line-height:1.78; color:rgba(240,237,232,0.62);
-    max-width:500px; margin-bottom:48px;
-    border-left:2px solid var(--orange); padding-left:20px;
-  }
-  .btn-primary {
-    display:inline-flex; align-items:center; gap:14px;
-    background:var(--orange); color:var(--black);
-    font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:900;
-    letter-spacing:0.08em; text-transform:uppercase; padding:18px 36px;
-    border:none; cursor:pointer;
-    box-shadow:0 0 50px rgba(232,84,42,0.45);
-    transition:background 0.15s, transform 0.15s, box-shadow 0.15s;
-  }
+  .hero-desc { font-size:17px; line-height:1.78; color:rgba(240,237,232,0.62); max-width:500px; margin-bottom:48px; border-left:2px solid var(--orange); padding-left:20px; }
+  .btn-primary { display:inline-flex; align-items:center; gap:14px; background:var(--orange); color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:900; letter-spacing:0.08em; text-transform:uppercase; padding:18px 36px; border:none; cursor:pointer; box-shadow:0 0 50px rgba(232,84,42,0.45); transition:background 0.15s, transform 0.15s, box-shadow 0.15s; }
   .btn-primary:hover { background:#ff6035; transform:translateY(-2px); box-shadow:0 0 70px rgba(232,84,42,0.65); }
-  .hero-meta {
-    margin-top:28px; display:flex; gap:24px; flex-wrap:wrap;
-    font-family:'Barlow Condensed',sans-serif; font-size:11px;
-    letter-spacing:0.14em; text-transform:uppercase; color:var(--gray);
-  }
+  .hero-meta { margin-top:28px; display:flex; gap:24px; flex-wrap:wrap; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); }
   .hero-meta span { display:flex; align-items:center; gap:6px; }
   .hero-meta span::before { content:'—'; color:var(--orange); }
 
   /* INTRO */
   #intro-section { display:none; padding:80px 0; min-height:100vh; flex-direction:column; justify-content:center; }
-  .section-title {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(32px,6vw,54px); font-weight:900; text-transform:uppercase;
-    line-height:1.05; margin-bottom:36px;
-  }
+  .section-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(32px,6vw,54px); font-weight:900; text-transform:uppercase; line-height:1.05; margin-bottom:36px; }
   .section-title span { color:var(--orange); }
   .rules { display:flex; flex-direction:column; gap:12px; margin-bottom:44px; }
-  .rule {
-    display:flex; gap:18px; align-items:flex-start;
-    padding:20px 22px; background:var(--gray-dim); border:1px solid var(--border);
-  }
-  .rule-num {
-    font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:900;
-    color:var(--orange); line-height:1; flex-shrink:0; width:28px;
-  }
+  .rule { display:flex; gap:18px; align-items:flex-start; padding:20px 22px; background:var(--gray-dim); border:1px solid var(--border); }
+  .rule-num { font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:900; color:var(--orange); line-height:1; flex-shrink:0; width:28px; }
   .rule-text { font-size:15px; line-height:1.68; color:rgba(240,237,232,0.72); }
   .rule-text strong { color:var(--white); font-weight:500; }
 
   /* QUIZ */
   #quiz-section { display:none; padding:80px 0; min-height:100vh; }
   .progress-wrap { margin-bottom:64px; }
-  .progress-meta {
-    display:flex; justify-content:space-between;
-    font-family:'Barlow Condensed',sans-serif; font-size:11px;
-    letter-spacing:0.18em; text-transform:uppercase; color:var(--gray); margin-bottom:12px;
-  }
+  .progress-meta { display:flex; justify-content:space-between; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gray); margin-bottom:12px; }
   .progress-track { height:1px; background:rgba(255,255,255,0.08); }
-  .progress-fill {
-    height:100%; background:var(--orange);
-    box-shadow:0 0 14px var(--orange-glow);
-    transition:width 0.6s cubic-bezier(0.4,0,0.2,1);
-  }
+  .progress-fill { height:100%; background:var(--orange); box-shadow:0 0 14px var(--orange-glow); transition:width 0.6s cubic-bezier(0.4,0,0.2,1); }
   .question-block { animation:fadeUp 0.45s ease; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .q-category {
-    font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700;
-    letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:18px;
-    display:flex; align-items:center; gap:10px;
-  }
+  .q-category { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
   .q-category::after { content:''; flex:1; height:1px; background:rgba(232,84,42,0.22); }
-  .q-text {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(26px,5vw,44px); font-weight:800; line-height:1.08;
-    text-transform:uppercase; margin-bottom:14px;
-  }
+  .q-text { font-family:'Barlow Condensed',sans-serif; font-size:clamp(26px,5vw,44px); font-weight:800; line-height:1.08; text-transform:uppercase; margin-bottom:14px; }
   .q-hint { font-size:15px; line-height:1.72; color:rgba(240,237,232,0.48); margin-bottom:28px; }
-  .q-textarea {
-    width:100%; background:var(--gray-dim);
-    border:1px solid var(--border); border-bottom:1px solid rgba(232,84,42,0.28);
-    color:var(--white); font-family:'Barlow',sans-serif; font-size:16px; line-height:1.7;
-    padding:20px; resize:none; min-height:150px; outline:none;
-    transition:border-color 0.2s, background 0.2s;
-  }
+  .q-textarea { width:100%; background:var(--gray-dim); border:1px solid var(--border); border-bottom:1px solid rgba(232,84,42,0.28); color:var(--white); font-family:'Barlow',sans-serif; font-size:16px; line-height:1.7; padding:20px; resize:none; min-height:150px; outline:none; transition:border-color 0.2s, background 0.2s; }
   .q-textarea:focus { border-color:rgba(232,84,42,0.55); background:rgba(232,84,42,0.05); }
   .q-textarea::placeholder { color:rgba(240,237,232,0.2); }
-  .btn-ghost {
-    margin-top:20px; display:inline-flex; align-items:center; gap:10px;
-    background:transparent; border:1px solid rgba(232,84,42,0.38); color:var(--orange);
-    font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;
-    letter-spacing:0.1em; text-transform:uppercase; padding:14px 26px; cursor:pointer;
-    transition:all 0.15s;
-  }
+  .btn-ghost { margin-top:20px; display:inline-flex; align-items:center; gap:10px; background:transparent; border:1px solid rgba(232,84,42,0.38); color:var(--orange); font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:14px 26px; cursor:pointer; transition:all 0.15s; }
   .btn-ghost:hover { background:var(--orange); color:var(--black); box-shadow:0 0 30px rgba(232,84,42,0.4); }
 
   /* LOADING */
-  #loading-section {
-    display:none; min-height:100vh;
-    align-items:center; justify-content:center; flex-direction:column; gap:28px; text-align:center;
-  }
-  .loader-ring {
-    width:52px; height:52px;
-    border:1px solid rgba(255,255,255,0.08); border-top-color:var(--orange);
-    border-radius:50%; animation:spin 0.9s linear infinite;
-    box-shadow:0 0 24px rgba(232,84,42,0.35);
-  }
+  #loading-section { display:none; min-height:100vh; align-items:center; justify-content:center; flex-direction:column; gap:28px; text-align:center; }
+  .loader-ring { width:52px; height:52px; border:1px solid rgba(255,255,255,0.08); border-top-color:var(--orange); border-radius:50%; animation:spin 0.9s linear infinite; box-shadow:0 0 24px rgba(232,84,42,0.35); }
   @keyframes spin { to{transform:rotate(360deg)} }
-  .loading-text {
-    font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700;
-    text-transform:uppercase; letter-spacing:0.08em; color:var(--orange);
-  }
+  .loading-text { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--orange); }
   .loading-sub { font-size:13px; color:var(--gray); }
 
   /* RESULT */
   #result-section { display:none; padding:80px 0 120px; }
-  .result-eyebrow {
-    font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700;
-    letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:20px;
-    display:flex; align-items:center; gap:10px;
-  }
+  .result-eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
   .result-eyebrow::after { content:''; flex:1; height:1px; background:rgba(232,84,42,0.22); }
-  .result-h1 {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(44px,8vw,84px); font-weight:900; text-transform:uppercase;
-    line-height:0.9; margin-bottom:14px;
-  }
+  .result-h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(44px,8vw,84px); font-weight:900; text-transform:uppercase; line-height:0.9; margin-bottom:14px; }
   .result-h1 span { color:var(--orange); }
-  .ikigai-phrase {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(18px,3.5vw,28px); font-weight:700; text-transform:uppercase;
-    color:rgba(240,237,232,0.42); margin-bottom:56px; line-height:1.25;
-  }
-  .ikigai-diagram { position:relative; width:100%; height:320px; margin-bottom:56px; }
+  .ikigai-phrase { font-family:'Barlow Condensed',sans-serif; font-size:clamp(18px,3.5vw,28px); font-weight:700; text-transform:uppercase; color:rgba(240,237,232,0.42); margin-bottom:48px; line-height:1.25; }
+
+  /* DIAGRAM - mobile first */
+  .ikigai-diagram { position:relative; width:100%; margin-bottom:56px; }
+  .diagram-inner { position:relative; width:100%; padding-bottom:70%; }
   .ik-c { position:absolute; border-radius:50%; opacity:0.15; transition:opacity 0.3s; }
   .ik-c:hover { opacity:0.26; }
-  .ik-lbl {
-    position:absolute; font-family:'Barlow Condensed',sans-serif;
-    font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-    color:rgba(240,237,232,0.38); text-align:center; line-height:1.4; max-width:90px;
-  }
-  .ik-center {
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    background:rgba(8,8,8,0.96); border:1px solid var(--orange);
-    box-shadow:0 0 48px rgba(232,84,42,0.32), inset 0 0 20px rgba(232,84,42,0.06);
-    padding:16px 20px; text-align:center;
-    font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:800;
-    line-height:1.25; text-transform:uppercase; color:var(--orange); max-width:185px;
-  }
+  .ik-lbl { position:absolute; font-family:'Barlow Condensed',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(240,237,232,0.45); text-align:center; line-height:1.4; }
+  .ik-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(8,8,8,0.96); border:1px solid var(--orange); box-shadow:0 0 40px rgba(232,84,42,0.3), inset 0 0 16px rgba(232,84,42,0.06); padding:12px 14px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:800; line-height:1.25; text-transform:uppercase; color:var(--orange); width:44%; max-width:180px; z-index:2; }
+
+  /* CARDS */
   .cards { display:flex; flex-direction:column; gap:1px; margin-bottom:40px; }
-  .card {
-    padding:24px 26px; background:var(--gray-dim);
-    border-left:2px solid transparent; transition:border-color 0.2s, background 0.2s;
-  }
+  .card { padding:22px 24px; background:var(--gray-dim); border-left:2px solid transparent; transition:border-color 0.2s, background 0.2s; }
   .card:hover { border-left-color:var(--orange); background:var(--orange-dim); }
-  .card-label {
-    font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700;
-    letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:6px;
-  }
-  .card-title {
-    font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800;
-    text-transform:uppercase; margin-bottom:8px;
-  }
+  .card-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:6px; }
+  .card-title { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800; text-transform:uppercase; margin-bottom:8px; }
   .card-text { font-size:15px; color:rgba(240,237,232,0.65); line-height:1.72; }
-  .insight-block {
-    margin-bottom:40px; padding:28px; border:1px solid var(--border); background:var(--gray-dim);
-    position:relative;
-  }
-  .insight-block::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:1px;
-    background:linear-gradient(90deg, var(--orange), transparent);
-  }
-  .insight-label {
-    font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700;
-    letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:16px;
-  }
+
+  /* INSIGHT */
+  .insight-block { margin-bottom:40px; padding:28px; border:1px solid var(--border); background:var(--gray-dim); position:relative; }
+  .insight-block::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, var(--orange), transparent); }
+  .insight-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:16px; }
   .insight-text { font-size:16px; line-height:1.82; color:rgba(240,237,232,0.8); white-space:pre-wrap; }
+
+  /* NEXT STEPS */
+  .nextsteps-block { margin-bottom:40px; padding:28px; border:1px solid var(--border); background:var(--gray-dim); position:relative; }
+  .nextsteps-block::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, rgba(232,84,42,0.5), transparent); }
+  .nextsteps-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:16px; }
+  .nextsteps-list { display:flex; flex-direction:column; gap:14px; }
+  .nextstep-item { display:flex; gap:14px; align-items:flex-start; }
+  .nextstep-num { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:900; color:var(--orange); line-height:1; flex-shrink:0; width:20px; }
+  .nextstep-text { font-size:15px; line-height:1.68; color:rgba(240,237,232,0.72); }
+
+  /* ACTIONS */
   .actions-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:56px; }
-  .btn-action {
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700;
-    letter-spacing:0.08em; text-transform:uppercase; padding:13px 22px;
-    cursor:pointer; transition:all 0.15s; border:none; text-decoration:none;
-  }
+  .btn-action { display:inline-flex; align-items:center; gap:8px; font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:13px 22px; cursor:pointer; transition:all 0.15s; border:none; text-decoration:none; }
   .btn-action.orange { background:var(--orange); color:var(--black); box-shadow:0 0 28px rgba(232,84,42,0.38); }
   .btn-action.orange:hover { background:#ff6035; box-shadow:0 0 44px rgba(232,84,42,0.55); }
   .btn-action.outline { background:transparent; border:1px solid rgba(255,255,255,0.14); color:var(--white); }
   .btn-action.outline:hover { border-color:rgba(255,255,255,0.32); }
+
+  /* CTA */
   .cta-block { padding:48px 0; border-top:1px solid var(--border); text-align:center; }
-  .cta-title {
-    font-family:'Barlow Condensed',sans-serif;
-    font-size:clamp(28px,5vw,50px); font-weight:900; text-transform:uppercase; margin-bottom:14px;
-  }
-  .cta-sub {
-    font-size:16px; color:rgba(240,237,232,0.52); line-height:1.72; margin-bottom:32px;
-    max-width:480px; margin-left:auto; margin-right:auto;
-  }
+  .cta-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(28px,5vw,50px); font-weight:900; text-transform:uppercase; margin-bottom:14px; }
+  .cta-sub { font-size:16px; color:rgba(240,237,232,0.52); line-height:1.72; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; }
   .cta-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; }
-  .cta-btn {
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:800;
-    letter-spacing:0.06em; text-transform:uppercase; padding:15px 28px;
-    text-decoration:none; cursor:pointer; transition:all 0.15s; border:none;
-  }
+  .cta-btn { display:inline-flex; align-items:center; gap:10px; font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; padding:15px 28px; text-decoration:none; cursor:pointer; transition:all 0.15s; border:none; }
   .cta-btn.primary { background:var(--orange); color:var(--black); box-shadow:0 0 36px rgba(232,84,42,0.42); }
   .cta-btn.primary:hover { background:#ff6035; transform:translateY(-2px); }
   .cta-btn.secondary { border:1px solid var(--border); color:var(--white); background:transparent; }
   .cta-btn.secondary:hover { border-color:rgba(255,255,255,0.28); }
   .cta-note { font-size:13px; color:var(--gray); }
-  .signature {
-    margin-top:64px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.05);
-    display:flex; align-items:center; justify-content:space-between;
-  }
+  .signature { margin-top:64px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; }
   .sig-name { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; }
   .sig-sub { font-size:12px; color:var(--gray); margin-top:2px; }
   .chevrons { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:900; color:var(--orange); letter-spacing:-3px; }
+
   @media(max-width:480px) {
     .cta-buttons,.actions-bar { flex-direction:column; }
     .cta-btn,.btn-action { justify-content:center; width:100%; }
-    .ikigai-diagram { height:260px; }
   }
 </style>
 </head>
@@ -284,9 +150,7 @@
   <div class="container">
     <div class="hero">
       <h1>Encuentra<br>tu <span class="accent">Ikigai</span></h1>
-      <p class="hero-desc">
-        Esta es una herramienta gratuita, sin pedir correos ni datos personales. El único objetivo es ayudarte a encontrar claridad sobre el camino que quieres tomar.
-      </p>
+      <p class="hero-desc">Esta es una herramienta gratuita, sin pedir correos ni datos personales. El único objetivo es ayudarte a encontrar claridad sobre el camino que quieres tomar.</p>
       <div>
         <button class="btn-primary" onclick="showIntro()">
           Empezar
@@ -307,22 +171,10 @@
   <div class="container">
     <div class="section-title">Antes de<br>empezar, <span>lee esto</span></div>
     <div class="rules">
-      <div class="rule">
-        <div class="rule-num">1</div>
-        <div class="rule-text"><strong>Responde como si hablaras con tu mejor amigo.</strong> No hay respuestas correctas ni incorrectas. Nadie te está evaluando. Mientras más honesto seas, más útil será el resultado.</div>
-      </div>
-      <div class="rule">
-        <div class="rule-num">2</div>
-        <div class="rule-text"><strong>Si no sabes algo, dilo.</strong> Pero escribe lo primero que se te viene a la mente cuando lees la pregunta. A veces esa respuesta instintiva dice más que una respuesta "perfecta".</div>
-      </div>
-      <div class="rule">
-        <div class="rule-num">3</div>
-        <div class="rule-text"><strong>El contexto importa.</strong> Esta herramienta funciona mejor cuando le das respuestas profundas. No se trata de llenar un formulario, se trata de conocerte un poco mejor.</div>
-      </div>
-      <div class="rule">
-        <div class="rule-num">4</div>
-        <div class="rule-text"><strong>Puede que te haga preguntas adicionales.</strong> Si tus respuestas necesitan más contexto para darte un resultado que valga la pena, la herramienta te va a pedir que profundices. Es normal.</div>
-      </div>
+      <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Responde como si hablaras con tu mejor amigo.</strong> No hay respuestas correctas ni incorrectas. Nadie te está evaluando. Mientras más honesto seas, más útil será el resultado.</div></div>
+      <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Si no sabes algo, dilo.</strong> Pero escribe lo primero que se te viene a la mente cuando lees la pregunta. A veces esa respuesta instintiva dice más que una respuesta perfecta.</div></div>
+      <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>El contexto importa.</strong> Esta herramienta funciona mejor cuando le das respuestas profundas. No se trata de llenar un formulario, se trata de conocerte un poco mejor.</div></div>
+      <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Puede que te haga preguntas adicionales.</strong> Si tus respuestas necesitan más contexto, la herramienta te va a pedir que profundices. Es normal.</div></div>
     </div>
     <button class="btn-primary" onclick="startQuiz()">
       Listo, empezamos
@@ -335,10 +187,7 @@
 <section id="quiz-section">
   <div class="container">
     <div class="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Pregunta 1</span>
-        <span id="progress-pct">0%</span>
-      </div>
+      <div class="progress-meta"><span id="progress-text">Pregunta 1</span><span id="progress-pct">0%</span></div>
       <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
     <div id="questions-container"></div>
@@ -360,32 +209,35 @@
     <div class="result-eyebrow">Tu resultado</div>
     <div class="result-h1">Tu <span>Ikigai</span></div>
     <div class="ikigai-phrase" id="ikigai-phrase">—</div>
+
+    <!-- Diagram responsive -->
     <div class="ikigai-diagram">
-      <div class="ik-c" style="width:210px;height:210px;background:#E8542A;top:10px;left:calc(50% - 155px)"></div>
-      <div class="ik-c" style="width:210px;height:210px;background:#4A90D9;top:10px;left:calc(50% - 55px)"></div>
-      <div class="ik-c" style="width:210px;height:210px;background:#8B5CF6;top:120px;left:calc(50% - 155px)"></div>
-      <div class="ik-c" style="width:210px;height:210px;background:#10B981;top:120px;left:calc(50% - 55px)"></div>
-      <div class="ik-lbl" style="top:20px;left:calc(50% - 230px)">Lo que<br>amas</div>
-      <div class="ik-lbl" style="top:20px;left:calc(50% + 143px)">En lo que<br>eres bueno</div>
-      <div class="ik-lbl" style="top:270px;left:calc(50% - 230px)">Lo que el<br>mundo necesita</div>
-      <div class="ik-lbl" style="top:270px;left:calc(50% + 143px)">Por lo que<br>te pagan</div>
-      <div class="ik-center" id="ik-center-text">Tu ikigai</div>
+      <div class="diagram-inner" id="diagram-inner"></div>
     </div>
+
     <div class="cards" id="result-cards"></div>
+
     <div class="insight-block">
       <div class="insight-label">Análisis</div>
       <div class="insight-text" id="insight-text">Cargando...</div>
     </div>
+
+    <div class="nextsteps-block">
+      <div class="nextsteps-label">Por dónde podrías continuar</div>
+      <div class="nextsteps-list" id="nextsteps-list"></div>
+    </div>
+
     <div class="actions-bar">
       <button class="btn-action orange" onclick="shareLinkedIn()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-        Compartir en LinkedIn
+        Compartir resultado
       </button>
       <button class="btn-action outline" onclick="downloadResult()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Descargar resultado
       </button>
     </div>
+
     <div class="cta-block">
       <div class="cta-title">¿Te fue útil?</div>
       <p class="cta-sub">Si esta herramienta te ayudó a tener un poco más de claridad, compártela. Hay personas en tu red que también están buscando respuestas — quizás esto les llega en el momento justo.</p>
@@ -394,10 +246,11 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
           Compartir en LinkedIn
         </button>
-        <a href="https://www.linkedin.com/in/esteban-rico-sierra/" target="_blank" class="cta-btn secondary">Conectar en LinkedIn</a>
+        <a href="https://substack.com/@estebanrs23" target="_blank" class="cta-btn secondary">Escribirme en Substack</a>
       </div>
       <p class="cta-note">¿Tienes feedback o ideas para mejorarla? Me encantaría escucharte.</p>
     </div>
+
     <div class="signature">
       <div>
         <div class="sig-name">Esteban Rico S.</div>
@@ -410,12 +263,12 @@
 
 <script>
 const baseQuestions = [
-  { id:'q1', category:'01 — Lo que amas', text:'¿Qué actividades te hacen perder la noción del tiempo?', hint:'Está bien si no tienes una respuesta clara. Escribe lo primero que se te venga a la mente cuando lees esta pregunta. Responde como si le hablaras a tu mejor amigo.' },
+  { id:'q1', category:'01 — Lo que amas', text:'¿Qué actividades te hacen perder la noción del tiempo?', hint:'Está bien si no tienes una respuesta clara. Escribe lo primero que se te venga a la mente. Responde como si le hablaras a tu mejor amigo.' },
   { id:'q2', category:'02 — Lo que amas', text:'Si el dinero no fuera problema, ¿cómo sería tu semana ideal?', hint:'Con quién estarías, dónde, qué harías. Lo más específico que puedas.' },
   { id:'q3', category:'03 — En lo que eres bueno', text:'¿Qué cosas se te dan naturalmente bien?', hint:'Sin falsa modestia. Habilidades, formas de pensar, cómo tratas a las personas. Lo que otros te reconocen o lo que haces casi sin esfuerzo.' },
   { id:'q4', category:'04 — En lo que eres bueno', text:'¿A quién admiras y qué es exactamente lo que admiras de esa persona?', hint:'Puede ser alguien cercano o un personaje público. Sé específico en el porqué.' },
-  { id:'q5', category:'05 — Lo que el mundo necesita', text:'¿Qué cosas del mundo te molestan o te duelen?', hint:'Lo que ves a tu alrededor y piensas "alguien debería hacer algo con eso". No tienes que ser políticamente correcto aquí.' },
-  { id:'q6', category:'06 — Por lo que te pagan', text:'¿Por qué cosas te han pagado o estarían dispuestos a pagarte?', hint:'Incluye todo aunque no te apasione completamente. Trabajos, proyectos, servicios, habilidades que otros valoran.' },
+  { id:'q5', category:'05 — Lo que el mundo necesita', text:'¿Qué cosas del mundo te molestan o te duelen?', hint:'Lo que ves a tu alrededor y piensas "alguien debería hacer algo con eso".' },
+  { id:'q6', category:'06 — Por lo que te pagan', text:'¿Por qué cosas te han pagado o estarían dispuestos a pagarte?', hint:'Incluye todo aunque no te apasione completamente. Trabajos, proyectos, habilidades que otros valoran.' },
   { id:'q7', category:'07 — Tu legado', text:'¿Cómo quieres que te recuerden?', hint:'No tiene que ser grandioso. Puede ser algo simple y profundo. ¿Qué dirían las personas que más te importan?' }
 ];
 
@@ -444,9 +297,7 @@ function renderQuestion(index) {
       <div class="q-text">${q.text}</div>
       <p class="q-hint">${q.hint}</p>
       <textarea class="q-textarea" id="current-answer" placeholder="Escribe aquí..."></textarea>
-      <button class="btn-ghost" onclick="handleNext()">
-        ${isLast ? 'Ver mi Ikigai' : 'Siguiente'} &nbsp;>>>
-      </button>
+      <button class="btn-ghost" onclick="handleNext()">${isLast ? 'Ver mi Ikigai' : 'Siguiente'} &nbsp;>>></button>
     </div>`;
   const total = Math.max(allQuestions.length, 7);
   const pct = Math.round((index / total) * 100);
@@ -479,10 +330,7 @@ function showLoading() {
   document.getElementById('quiz-section').style.display = 'none';
   document.getElementById('loading-section').style.display = 'flex';
   let i = 0;
-  loadingInterval = setInterval(() => {
-    i = (i+1) % loadingMsgs.length;
-    document.getElementById('loading-text').textContent = loadingMsgs[i];
-  }, 2200);
+  loadingInterval = setInterval(() => { i=(i+1)%loadingMsgs.length; document.getElementById('loading-text').textContent = loadingMsgs[i]; }, 2200);
 }
 
 function hideLoading() {
@@ -494,11 +342,7 @@ async function callClaude(prompt, maxTokens) {
   const res = await fetch('/.netlify/functions/claude', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: maxTokens || 800,
-      messages: [{ role: 'user', content: prompt }]
-    })
+    body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: maxTokens || 800, messages: [{ role: 'user', content: prompt }] })
   });
   const data = await res.json();
   return data.content.map(i => i.text || '').join('').replace(/```json|```/g, '').trim();
@@ -508,19 +352,22 @@ async function checkFollowUps() {
   showLoading();
   const answersText = allQuestions.filter(q => answers[q.id]).map(q => `${q.text}\n"${answers[q.id]}"`).join('\n\n');
   try {
-    const raw = await callClaude(`Eres un facilitador honesto ayudando a alguien a encontrar su Ikigai. Analiza estas respuestas y determina si necesitas 1-3 preguntas de seguimiento para generar un resultado genuinamente personalizado (no genérico).
+    const raw = await callClaude(`Eres un facilitador ayudando a alguien a encontrar su Ikigai. Analiza estas respuestas.
 
+REGLAS IMPORTANTES:
+- Solo pide preguntas de seguimiento si hay vacíos REALES que impidan generar un resultado personalizado
+- NO hagas preguntas que ya fueron respondidas de forma implícita
+- NO hagas preguntas sobre traumas, problemas personales, o temas sensibles
+- Máximo 2 preguntas adicionales
+- Si las respuestas son suficientes, no pidas seguimiento
+
+Respuestas:
 ${answersText}
 
 Responde SOLO en JSON sin markdown:
-{
-  "needs_followup": true o false,
-  "followup_questions": [
-    { "id": "fq1", "category": "Profundizando", "text": "La pregunta", "hint": "Por qué la preguntas" }
-  ]
-}
-
-Solo pide seguimiento si hay vacíos reales. Máximo 2 preguntas adicionales.`, 500);
+{"needs_followup":false,"followup_questions":[]}
+o
+{"needs_followup":true,"followup_questions":[{"id":"fq1","category":"Una pregunta más","text":"pregunta concreta","hint":"por qué la preguntas en una línea"}]}`, 400);
 
     const parsed = JSON.parse(raw);
     hideLoading();
@@ -541,21 +388,27 @@ async function generateResult() {
   showLoading();
   const answersText = allQuestions.filter(q => answers[q.id]).map(q => `${q.text}\n"${answers[q.id]}"`).join('\n\n');
   try {
-    const raw = await callClaude(`Eres un guía honesto y directo, sin rollos de guru ni frases motivacionales genéricas. Hablas como un amigo que te conoce bien y te dice las verdades con respeto.
+    const raw = await callClaude(`Eres un guía honesto y directo. Hablas como un amigo que te conoce bien. NUNCA uses "vos", "tenés", "hacés" ni conjugaciones rioplatenses. Usa siempre "tú", "te", "tienes". Español neutro.
 
-Una persona respondió estas preguntas para encontrar su Ikigai:
+REGLAS DEL ANÁLISIS:
+- Basa todo ÚNICAMENTE en lo que la persona escribió, no en suposiciones
+- No hagas afirmaciones categóricas sobre su vida personal, traumas o situaciones que no mencionó
+- Si algo no está claro, preséntalo como posibilidad, no como certeza
+- Sé empático y constructivo, nunca alarmista
 
+Respuestas de la persona:
 ${answersText}
 
-Genera un análisis genuino y personalizado. Responde SOLO en JSON sin markdown:
+Responde SOLO en JSON sin markdown:
 {
-  "ikigai_central": "Frase corta (máx 10 palabras) que captura su ikigai. En español, en mayúsculas.",
-  "lo_que_amas": "2 oraciones específicas basadas en SUS respuestas. No genérico.",
+  "ikigai_central": "Frase corta máx 10 palabras en MAYÚSCULAS que captura su ikigai",
+  "lo_que_amas": "2 oraciones basadas en sus respuestas. No genérico.",
   "en_lo_que_eres_bueno": "2 oraciones sobre sus habilidades reales.",
-  "lo_que_el_mundo_necesita": "2 oraciones sobre cómo su sensibilidad conecta con el mundo.",
-  "por_lo_que_te_pagan": "2 oraciones sobre su valor profesional real.",
-  "insight": "4-5 párrafos de análisis genuino como amigo que te habla sin filtros. IMPORTANTE: usa siempre tuteo neutro latino, nunca vos ni conjugaciones rioplatenses como tenés, hacés, podés. Señala patrones que quizás no había visto. Menciona tensiones reales. Conecta sus referentes con lo que aspira ser. Termina con UNA pregunta poderosa que lo deje pensando. Sin frases de calendario. En español neutro."
-}`, 1200);
+  "lo_que_el_mundo_necesita": "2 oraciones sobre cómo conecta con el mundo.",
+  "por_lo_que_te_pagan": "2 oraciones sobre su valor profesional.",
+  "insight": "4 párrafos. Señala patrones que quizás no había visto. Menciona tensiones reales entre lo que hace y lo que quiere. Conecta sus referentes con lo que aspira ser. Termina con UNA pregunta que lo invite a reflexionar. Sin frases de calendario. Español neutro.",
+  "pasos": ["sugerencia práctica 1 en tono de invitación", "sugerencia práctica 2", "sugerencia práctica 3", "sugerencia práctica 4"]
+}`, 1400);
 
     resultData = JSON.parse(raw);
     hideLoading();
@@ -566,18 +419,46 @@ Genera un análisis genuino y personalizado. Responde SOLO en JSON sin markdown:
   }
 }
 
+function renderDiagram(phrase) {
+  const inner = document.getElementById('diagram-inner');
+  const w = inner.offsetWidth || 300;
+  const h = w * 0.7;
+  inner.style.paddingBottom = '0';
+  inner.style.height = h + 'px';
+
+  const r = Math.min(w, h) * 0.38;
+  const cx = w / 2, cy = h / 2;
+  const offset = r * 0.52;
+
+  const circles = [
+    { x: cx - offset, y: cy - offset, color: '#E8542A', label: 'Lo que\namas', lx: cx - offset - r * 0.85, ly: cy - offset - r * 0.72 },
+    { x: cx + offset, y: cy - offset, color: '#4A90D9', label: 'En lo que\neres bueno', lx: cx + offset + r * 0.2, ly: cy - offset - r * 0.72 },
+    { x: cx - offset, y: cy + offset, color: '#8B5CF6', label: 'Lo que el\nmundo necesita', lx: cx - offset - r * 0.85, ly: cy + offset + r * 0.55 },
+    { x: cx + offset, y: cy + offset, color: '#10B981', label: 'Por lo que\nte pagan', lx: cx + offset + r * 0.2, ly: cy + offset + r * 0.55 },
+  ];
+
+  inner.innerHTML = circles.map(c => `
+    <div class="ik-c" style="width:${r*2}px;height:${r*2}px;background:${c.color};top:${c.y-r}px;left:${c.x-r}px;"></div>
+    <div class="ik-lbl" style="top:${c.ly}px;left:${c.lx}px;width:${r*0.9}px;">${c.label.replace('\n','<br>')}</div>
+  `).join('') + `<div class="ik-center" id="ik-center-text" style="top:${cy}px;left:${cx}px;">${phrase || 'Tu ikigai'}</div>`;
+}
+
 function renderResult(r) {
   document.getElementById('result-section').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
   if (!r) {
     document.getElementById('ikigai-phrase').textContent = 'Tu proceso';
-    document.getElementById('ik-center-text').textContent = 'Tus respuestas';
+    renderDiagram('Tus respuestas');
     document.getElementById('insight-text').textContent = 'Hubo un error generando el análisis. Pero tus respuestas ya tienen valor — reléelas con calma.';
     document.getElementById('result-cards').innerHTML = '';
+    document.getElementById('nextsteps-list').innerHTML = '';
     return;
   }
+
   document.getElementById('ikigai-phrase').textContent = r.ikigai_central;
-  document.getElementById('ik-center-text').textContent = r.ikigai_central;
+  setTimeout(() => renderDiagram(r.ikigai_central), 100);
+
   const cards = [
     { label:'Lo que amas', title:'Pasión', text:r.lo_que_amas },
     { label:'En lo que eres bueno', title:'Vocación', text:r.en_lo_que_eres_bueno },
@@ -590,21 +471,31 @@ function renderResult(r) {
       <div class="card-title">${c.title}</div>
       <div class="card-text">${c.text}</div>
     </div>`).join('');
+
   document.getElementById('insight-text').textContent = r.insight;
+
+  if (r.pasos && r.pasos.length) {
+    document.getElementById('nextsteps-list').innerHTML = r.pasos.map((p, i) => `
+      <div class="nextstep-item">
+        <div class="nextstep-num">${i+1}</div>
+        <div class="nextstep-text">${p}</div>
+      </div>`).join('');
+  }
 }
 
 function shareLinkedIn() {
   const phrase = resultData ? resultData.ikigai_central : null;
   const text = phrase
-    ? `Acabo de encontrar mi Ikigai:\n\n"${phrase}"\n\nSi quieres encontrar el tuyo, esta herramienta gratuita te ayuda a tener más claridad sobre el camino que quieres tomar. Sin pedir correos ni datos personales.\n\nhttps://encuentra-tu-ikigai.netlify.app`
-    : `Si estás buscando claridad sobre el camino que quieres tomar, esta herramienta te puede ayudar a encontrar tu Ikigai. Es gratuita, sin registro, y va directo al grano.\n\nhttps://encuentra-tu-ikigai.netlify.app`;
+    ? `Acabo de encontrar mi Ikigai:\n\n"${phrase}"\n\nSi quieres encontrar el tuyo, esta herramienta gratuita te puede ayudar. Sin correos ni datos personales.\n\nhttps://encuentra-tu-ikigai.netlify.app`
+    : `Si estás buscando claridad sobre el camino que quieres tomar, esta herramienta te puede ayudar a encontrar tu Ikigai. Gratuita, sin registro.\n\nhttps://encuentra-tu-ikigai.netlify.app`;
   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://encuentra-tu-ikigai.netlify.app')}&summary=${encodeURIComponent(text)}`, '_blank');
 }
 
 function downloadResult() {
   if (!resultData) return;
   const answersText = allQuestions.filter(q => answers[q.id]).map(q => `${q.text}\n→ ${answers[q.id]}`).join('\n\n');
-  const content = `ENCUENTRA TU IKIGAI\n${'='.repeat(40)}\n\nTU IKIGAI CENTRAL\n${resultData.ikigai_central}\n\n${'─'.repeat(40)}\n\nLO QUE AMAS\n${resultData.lo_que_amas}\n\nEN LO QUE ERES BUENO\n${resultData.en_lo_que_eres_bueno}\n\nLO QUE EL MUNDO NECESITA\n${resultData.lo_que_el_mundo_necesita}\n\nPOR LO QUE TE PAGAN\n${resultData.por_lo_que_te_pagan}\n\n${'─'.repeat(40)}\n\nANÁLISIS PERSONAL\n${resultData.insight}\n\n${'─'.repeat(40)}\n\nTUS RESPUESTAS\n${answersText}\n\n${'─'.repeat(40)}\nGenerado con la herramienta de Esteban Rico S.\nsubstack.com/@estebanrs23\nlinkedin.com/in/esteban-rico-sierra/`;
+  const pasos = resultData.pasos ? resultData.pasos.map((p,i) => `${i+1}. ${p}`).join('\n') : '';
+  const content = `ENCUENTRA TU IKIGAI\n${'='.repeat(40)}\n\nTU IKIGAI CENTRAL\n${resultData.ikigai_central}\n\n${'─'.repeat(40)}\n\nLO QUE AMAS\n${resultData.lo_que_amas}\n\nEN LO QUE ERES BUENO\n${resultData.en_lo_que_eres_bueno}\n\nLO QUE EL MUNDO NECESITA\n${resultData.lo_que_el_mundo_necesita}\n\nPOR LO QUE TE PAGAN\n${resultData.por_lo_que_te_pagan}\n\n${'─'.repeat(40)}\n\nANÁLISIS\n${resultData.insight}\n\n${'─'.repeat(40)}\n\nPOR DÓNDE CONTINUAR\n${pasos}\n\n${'─'.repeat(40)}\n\nTUS RESPUESTAS\n${answersText}\n\n${'─'.repeat(40)}\nGenerado con la herramienta de Esteban Rico S.\nsubstack.com/@estebanrs23\nlinkedin.com/in/esteban-rico-sierra/`;
   const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
