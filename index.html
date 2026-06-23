@@ -3,156 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Found by Ikigai</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<title>Found by Ikigai — What if you actually knew what you were meant to do?</title>
+<meta name="description" content="A tool that helps you find clarity on what you were meant to do. Based on the Japanese concept of Ikigai.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/ikigai-symbol.png">
 <link rel="apple-touch-icon" href="/ikigai-symbol.png">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { overflow-x:hidden; }
+html { overflow-x:hidden; scroll-behavior:smooth; }
 body { background:#F5F0E8; color:#3C1F3D; font-family:'Poppins',sans-serif; overflow-x:hidden; }
 
 :root {
   --linen:#F5F0E8; --grape:#3C1F3D; --wasabi:#8B9E2A;
   --orange:#E55A2B; --blue:#9DB5D5; --sage:#9BAF9A;
-  --cassis:#7D1A45; --border:rgba(60,31,61,0.12);
-  --nav-h:72px;
+  --cassis:#7D1A45; --blossom:#DB8FAC; --indigo:#2A2350;
+  --border:rgba(60,31,61,0.1);
 }
 
 /* NAV */
 .nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  height:var(--nav-h); padding:0 32px;
-  display:flex; align-items:center;
+  height:72px; padding:0 32px;
+  display:flex; align-items:center; justify-content:space-between;
   background:rgba(245,240,232,0.95); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo { height:56px; display:block; }
+.nav-logo { height:48px; display:block; }
+.nav-cta {
+  background:var(--orange); color:#fff;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:600;
+  padding:10px 22px; border:none; border-radius:6px; cursor:pointer;
+  text-decoration:none; transition:background 0.15s;
+}
+.nav-cta:hover { background:#c94a1f; }
 
-/* SECTIONS */
-section { width:100%; }
-.wrap { max-width:680px; margin:0 auto; padding:0 24px; }
+/* LAYOUT */
+.wrap { max-width:860px; margin:0 auto; padding:0 24px; }
 
 /* HERO */
-#hero-section { min-height:100vh; display:flex; align-items:center; padding-top:var(--nav-h); }
-.hero { padding:60px 0; }
-.hero-tag { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:24px; }
-.hero-tag::before { content:''; width:24px; height:2px; background:var(--wasabi); flex-shrink:0; }
-.hero h1 { font-size:clamp(40px,8vw,80px); font-weight:800; line-height:1.0; letter-spacing:-0.02em; margin-bottom:24px; }
-.hero h1 .accent { color:var(--orange); }
-.hero-desc { font-size:17px; line-height:1.75; color:rgba(60,31,61,0.65); max-width:480px; margin-bottom:40px; }
-.hero-meta { margin-top:20px; display:flex; gap:20px; flex-wrap:wrap; font-size:12px; color:rgba(60,31,61,0.45); font-weight:500; }
+.hero-section { padding:160px 0 80px; text-align:center; }
+.hero-tag { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:24px; justify-content:center; }
+.hero-tag::before { content:''; width:20px; height:2px; background:var(--wasabi); }
+.hero-h1 { font-size:clamp(34px,5.5vw,64px); font-weight:800; line-height:1.08; margin-bottom:24px; max-width:700px; margin-left:auto; margin-right:auto; }
+.hero-sub { font-size:18px; line-height:1.75; color:rgba(60,31,61,0.6); margin-bottom:40px; max-width:540px; margin-left:auto; margin-right:auto; }
+.hero-meta { margin-top:24px; display:flex; gap:24px; flex-wrap:wrap; font-size:12px; color:rgba(60,31,61,0.42); font-weight:500; justify-content:center; }
 .hero-meta span::before { content:'· '; color:var(--wasabi); }
 
 /* BUTTONS */
-.btn-primary { display:inline-flex; align-items:center; gap:12px; background:var(--orange); color:#fff; font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; padding:15px 30px; border:none; border-radius:6px; cursor:pointer; transition:all 0.15s; box-shadow:0 4px 20px rgba(229,90,43,0.3); }
-.btn-primary:hover { background:#d04d20; transform:translateY(-1px); }
-.btn-ghost { display:inline-flex; align-items:center; gap:8px; background:transparent; border:1.5px solid var(--orange); color:var(--orange); font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; padding:12px 24px; border-radius:6px; cursor:pointer; transition:all 0.15s; }
-.btn-ghost:hover { background:var(--orange); color:#fff; }
+.btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--orange); color:#fff; font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; padding:16px 36px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:all 0.15s; box-shadow:0 4px 24px rgba(229,90,43,0.3); }
+.btn-primary:hover { background:#c94a1f; transform:translateY(-1px); box-shadow:0 8px 32px rgba(229,90,43,0.4); }
 
-/* INTRO */
-#intro-section { display:none; min-height:100vh; padding-top:var(--nav-h); }
-.intro-inner { padding:60px 0; }
-.section-title { font-size:clamp(26px,5vw,44px); font-weight:800; line-height:1.1; margin-bottom:28px; }
-.section-title span { color:var(--orange); }
-.rules { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
-.rule { display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:#fff; border:1px solid var(--border); border-radius:8px; }
-.rule-num { font-size:26px; font-weight:800; color:var(--orange); line-height:1; flex-shrink:0; }
-.rule-text { font-size:14px; line-height:1.65; color:rgba(60,31,61,0.75); padding-top:2px; }
-.rule-text strong { color:var(--grape); font-weight:600; }
+/* WHAT IS IKIGAI */
+.ikigai-section { padding:80px 0; border-top:1px solid var(--border); text-align:center; }
+.ikigai-h2 { font-size:clamp(24px,4vw,38px); font-weight:800; margin-bottom:16px; }
+.ikigai-desc { font-size:16px; line-height:1.75; color:rgba(60,31,61,0.6); max-width:580px; margin:0 auto 40px; }
+.ikigai-diagram-landing { position:relative; width:100%; max-width:420px; margin:0 auto; }
+.idl-inner { position:relative; width:100%; }
+.idl-c { position:absolute; border-radius:50%; opacity:0.18; }
+.idl-lbl { position:absolute; font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(60,31,61,0.5); text-align:center; line-height:1.4; }
+.idl-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; border:2px solid var(--orange); border-radius:8px; box-shadow:0 4px 20px rgba(229,90,43,0.15); padding:12px 16px; text-align:center; font-size:11px; font-weight:700; line-height:1.3; text-transform:uppercase; color:var(--orange); width:42%; max-width:160px; z-index:2; }
 
-/* QUIZ */
-#quiz-section { display:none; min-height:100vh; padding-top:var(--nav-h); }
-.quiz-inner { padding:48px 0; }
-.progress-wrap { margin-bottom:48px; }
-.progress-meta { display:flex; justify-content:space-between; font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(60,31,61,0.4); margin-bottom:8px; }
-.progress-track { height:3px; background:rgba(60,31,61,0.12); border-radius:2px; }
-.progress-fill { height:100%; background:var(--wasabi); border-radius:2px; transition:width 0.5s ease; }
-.question-block { animation:fadeUp 0.4s ease; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
-.q-category { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
-.q-category::after { content:''; flex:1; height:1px; background:var(--border); }
-.q-text { font-size:clamp(22px,4vw,34px); font-weight:800; line-height:1.15; margin-bottom:12px; }
-.q-hint { font-size:14px; line-height:1.7; color:rgba(60,31,61,0.5); margin-bottom:20px; }
-.q-textarea { width:100%; background:#fff; border:1.5px solid var(--border); border-radius:6px; color:var(--grape); font-family:'Poppins',sans-serif; font-size:15px; line-height:1.7; padding:16px; resize:none; min-height:140px; outline:none; transition:border-color 0.2s; display:block; }
-.q-textarea:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(229,90,43,0.1); }
-.q-textarea::placeholder { color:rgba(60,31,61,0.25); }
+/* SECTION SHARED */
+.section-eyebrow { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:12px; text-align:center; }
+.section-h2 { font-size:clamp(24px,4vw,38px); font-weight:800; text-align:center; margin-bottom:16px; }
+.section-sub { font-size:15px; color:rgba(60,31,61,0.55); text-align:center; max-width:500px; margin:0 auto 48px; line-height:1.7; }
 
-/* LOADING */
-#loading-section { display:none; min-height:100vh; padding-top:var(--nav-h); align-items:center; justify-content:center; flex-direction:column; gap:20px; text-align:center; }
-.loader-ring { width:44px; height:44px; border:3px solid var(--border); border-top-color:var(--orange); border-radius:50%; animation:spin 0.9s linear infinite; }
-@keyframes spin { to{transform:rotate(360deg)} }
-.loading-text { font-size:17px; font-weight:700; color:var(--grape); }
-.loading-sub { font-size:13px; color:rgba(60,31,61,0.45); }
+/* HOW IT WORKS */
+.how-section { padding:80px 0; background:#fff; }
+.steps { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.step { text-align:center; padding:32px 20px; border:1px solid var(--border); border-radius:12px; }
+.step-num { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--orange); color:#fff; font-size:18px; font-weight:800; margin-bottom:14px; }
+.step-title { font-size:16px; font-weight:700; margin-bottom:8px; }
+.step-text { font-size:13px; line-height:1.65; color:rgba(60,31,61,0.6); }
 
-/* RESULT */
-#result-section { display:none; padding-top:var(--nav-h); }
-.result-inner { padding:60px 0 80px; }
-.result-eyebrow { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
-.result-eyebrow::after { content:''; flex:1; height:1px; background:var(--border); }
-.result-h1 { font-size:clamp(36px,7vw,68px); font-weight:800; line-height:0.95; margin-bottom:10px; }
-.result-h1 span { color:var(--orange); }
-.ikigai-phrase { font-size:clamp(15px,2.5vw,22px); font-weight:600; color:rgba(60,31,61,0.4); margin-bottom:40px; }
+/* WHAT YOU GET */
+.benefits-section { padding:80px 0; border-top:1px solid var(--border); }
+.benefits-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.benefit { padding:28px; background:#fff; border:1px solid var(--border); border-radius:10px; border-left:4px solid transparent; }
+.benefit:nth-child(1) { border-left-color:var(--orange); }
+.benefit:nth-child(2) { border-left-color:var(--blue); }
+.benefit:nth-child(3) { border-left-color:var(--cassis); }
+.benefit:nth-child(4) { border-left-color:var(--sage); }
+.benefit-title { font-size:16px; font-weight:700; margin-bottom:6px; }
+.benefit-text { font-size:14px; line-height:1.65; color:rgba(60,31,61,0.6); }
 
-/* Diagram */
-.ikigai-diagram { position:relative; width:100%; margin-bottom:40px; }
-.diagram-inner { position:relative; width:100%; }
-.ik-c { position:absolute; border-radius:50%; opacity:0.18; }
-.ik-lbl { position:absolute; font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:rgba(60,31,61,0.5); text-align:center; line-height:1.4; }
-.ik-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; border:2px solid var(--orange); border-radius:8px; box-shadow:0 4px 20px rgba(229,90,43,0.15); padding:12px 14px; text-align:center; font-size:10px; font-weight:700; line-height:1.3; text-transform:uppercase; color:var(--orange); width:44%; max-width:170px; z-index:2; }
+/* TESTIMONIALS */
+.testimonials-section { padding:80px 0; background:#fff; }
+.testimonials-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.testimonial { padding:28px; border:1px solid var(--border); border-radius:10px; display:flex; flex-direction:column; }
+.testimonial-stars { color:var(--orange); font-size:14px; margin-bottom:12px; letter-spacing:2px; }
+.testimonial-text { font-size:14px; line-height:1.7; color:rgba(60,31,61,0.75); flex:1; margin-bottom:20px; }
+.testimonial-author { display:flex; align-items:center; gap:12px; }
+.testimonial-avatar { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:#fff; flex-shrink:0; }
+.testimonial-name { font-size:13px; font-weight:600; }
+.testimonial-role { font-size:11px; color:rgba(60,31,61,0.4); }
 
-/* Cards */
-.cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:28px; }
-.card { padding:18px; background:#fff; border:1px solid var(--border); border-radius:8px; border-top:3px solid transparent; }
-.card:nth-child(1) { border-top-color:var(--orange); }
-.card:nth-child(2) { border-top-color:var(--blue); }
-.card:nth-child(3) { border-top-color:var(--cassis); }
-.card:nth-child(4) { border-top-color:var(--sage); }
-.card-label { font-size:9px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(60,31,61,0.4); margin-bottom:4px; }
-.card-title { font-size:17px; font-weight:800; margin-bottom:6px; }
-.card-text { font-size:13px; color:rgba(60,31,61,0.65); line-height:1.6; }
+/* FAQ */
+.faq-section { padding:80px 0; border-top:1px solid var(--border); }
+.faq-list { max-width:600px; margin:0 auto; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-question { width:100%; background:none; border:none; padding:20px 0; font-family:'Poppins',sans-serif; font-size:15px; font-weight:600; color:var(--grape); text-align:left; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; transition:color 0.15s; }
+.faq-question:hover { color:var(--orange); }
+.faq-icon { font-size:20px; font-weight:400; color:var(--orange); transition:transform 0.2s; flex-shrink:0; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+.faq-answer-inner { padding:0 0 20px; font-size:14px; line-height:1.7; color:rgba(60,31,61,0.6); }
 
-/* Insight */
-.insight-block { margin-bottom:24px; padding:24px; background:#fff; border:1px solid var(--border); border-radius:8px; border-left:4px solid var(--wasabi); }
-.insight-label { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--wasabi); margin-bottom:12px; }
-.insight-text { font-size:15px; line-height:1.8; color:rgba(60,31,61,0.8); white-space:pre-wrap; }
+/* FINAL CTA */
+.final-cta-section { padding:80px 0; background:#fff; }
+.final-cta-box { background:var(--grape); border-radius:16px; padding:56px 40px; text-align:center; }
+.final-cta-h2 { font-size:clamp(22px,4vw,38px); font-weight:800; color:#fff; margin-bottom:12px; }
+.final-cta-sub { font-size:15px; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:32px; max-width:460px; margin-left:auto; margin-right:auto; }
+.btn-white { display:inline-flex; align-items:center; gap:10px; background:#fff; color:var(--grape); font-family:'Poppins',sans-serif; font-size:16px; font-weight:700; padding:16px 36px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:all 0.15s; box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+.btn-white:hover { transform:translateY(-1px); box-shadow:0 8px 28px rgba(0,0,0,0.2); }
 
-/* Next steps */
-.nextsteps-block { margin-bottom:24px; padding:24px; background:#fff; border:1px solid var(--border); border-radius:8px; border-left:4px solid var(--blue); }
-.nextsteps-label { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(60,31,61,0.4); margin-bottom:14px; }
-.nextstep-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
-.nextstep-num { font-size:16px; font-weight:800; color:var(--orange); line-height:1; flex-shrink:0; }
-.nextstep-text { font-size:14px; line-height:1.6; color:rgba(60,31,61,0.7); }
+/* FOOTER */
+.footer { padding:28px 0; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.footer-left { font-size:12px; color:rgba(60,31,61,0.4); }
+.footer-dots { display:flex; gap:5px; }
+.footer-dot { width:6px; height:6px; border-radius:50%; }
 
-/* Actions */
-.actions-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
-.btn-action { display:inline-flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; padding:11px 20px; cursor:pointer; transition:all 0.15s; border:none; text-decoration:none; border-radius:6px; }
-.btn-action.filled { background:var(--orange); color:#fff; }
-.btn-action.filled:hover { background:#d04d20; }
-.btn-action.outline { background:transparent; border:1.5px solid var(--border); color:var(--grape); }
-.btn-action.outline:hover { border-color:var(--grape); }
+@media(max-width:768px) {
+  .steps, .testimonials-grid { grid-template-columns:1fr; }
+  .benefits-grid { grid-template-columns:1fr; }
 
-/* CTA */
-.cta-block { padding:36px; background:var(--grape); border-radius:12px; text-align:center; margin-bottom:40px; }
-.cta-title { font-size:clamp(20px,4vw,32px); font-weight:800; color:#fff; margin-bottom:10px; }
-.cta-sub { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.65; margin-bottom:24px; max-width:420px; margin-left:auto; margin-right:auto; }
-.cta-buttons { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-.cta-btn { display:inline-flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; padding:12px 22px; text-decoration:none; cursor:pointer; transition:all 0.15s; border:none; border-radius:6px; }
-.cta-btn.primary { background:var(--orange); color:#fff; }
-.cta-btn.primary:hover { background:#d04d20; }
-.cta-btn.ghost { border:1.5px solid rgba(255,255,255,0.3); color:#fff; background:transparent; }
-.cta-btn.ghost:hover { border-color:#fff; }
+  .hero-section { padding:120px 0 60px; }
+}
+@media(max-width:480px) {
 
-.signature { display:flex; align-items:center; justify-content:space-between; padding-top:20px; border-top:1px solid var(--border); }
-.sig-name { font-size:13px; font-weight:700; }
-.sig-sub { font-size:11px; color:rgba(60,31,61,0.4); margin-top:2px; }
-.sig-dots { display:flex; gap:5px; }
-.sig-dot { width:7px; height:7px; border-radius:50%; }
-
-@media(max-width:580px) {
-  .cards { grid-template-columns:1fr; }
-  .cta-buttons, .actions-bar { flex-direction:column; }
-  .cta-btn, .btn-action { justify-content:center; width:100%; }
+  .hero-meta { flex-direction:column; gap:6px; }
+  .nav { padding:0 16px; }
+  .wrap { padding:0 16px; }
 }
 </style>
 </head>
@@ -160,331 +141,240 @@ section { width:100%; }
 
 <nav class="nav">
   <img src="/ikigai-logo.png" alt="Found by Ikigai" class="nav-logo">
+  <a href="/quiz" class="nav-cta">Get started →</a>
 </nav>
 
-<section id="hero-section">
+<!-- HERO -->
+<section class="hero-section">
   <div class="wrap">
-    <div class="hero">
-      <div class="hero-tag">Free tool · No sign-up needed</div>
-      <h1>Find your<br><span class="accent">Ikigai</span></h1>
-      <p class="hero-desc">A free tool to help you find clarity on the path you actually want to take. No email, no data, no agenda.</p>
-      <button class="btn-primary" onclick="showIntro()">
-        Get started
+    
+    <h1 class="hero-h1">What if you actually knew what you were <br>meant to do?</h1>
+    <p class="hero-sub">If you're here, it's because something inside you knows you were made for more. This is where you start figuring out what that is.</p>
+    <a href="/quiz" class="btn-primary">
+      Get started
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="hero-meta">
+      <span>7–10 questions</span>
+      <span>~10 minutes</span>
+      <span>Personalized analysis</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IKIGAI -->
+<section class="ikigai-section">
+  <div class="wrap">
+    <div class="section-eyebrow">The framework</div>
+    <h2 class="ikigai-h2">Based on Ikigai — a Japanese concept<br>for finding your reason for being.</h2>
+    <p class="ikigai-desc">Ikigai sits at the intersection of four fundamental questions. When they overlap, you've found the thing that gives your life direction.</p>
+    <div class="ikigai-diagram-landing">
+      <div class="idl-inner" id="idl-inner"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="wrap">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-h2">Three steps. Ten minutes. Real clarity.</h2>
+    <p class="section-sub">No multiple choice. No personality labels. Just honest questions and a tool that actually listens.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Answer honestly</div>
+        <div class="step-text">7 open-ended questions about what you love, what you're good at, what matters to you, and what you want your life to mean.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Go deeper</div>
+        <div class="step-text">The tool reads your answers and asks follow-ups where it needs more context — so your result isn't generic.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Get your result</div>
+        <div class="step-text">A personalized analysis with your Ikigai, an honest breakdown, and practical next steps you can actually act on.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="benefits-section">
+  <div class="wrap">
+    <div class="section-eyebrow">What you get</div>
+    <h2 class="section-h2">Not a vague label. A real starting point.</h2>
+    <p class="section-sub">Everything is based on what you write — not on pre-built categories or cookie-cutter results.</p>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-title">Your personal Ikigai statement</div>
+        <div class="benefit-text">A clear phrase that captures where your passion, skills, purpose and livelihood overlap — in your own words.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">Four-dimension breakdown</div>
+        <div class="benefit-text">Specific insights on what you love, what you're built for, what the world needs from you, and where the money is.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">Honest analysis</div>
+        <div class="benefit-text">Patterns you haven't noticed. Tensions between what you do and what you want. No fluff, no motivational clichés.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">Practical next steps</div>
+        <div class="benefit-text">Suggestions for where to go from here — framed as invitations to explore, not orders to follow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="wrap">
+    <div class="section-eyebrow">What people say</div>
+    <h2 class="section-h2">Real reactions.</h2>
+    <p class="section-sub"></p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I've done personality tests before but they always felt generic. This actually made me stop and think. The analysis called out something I've been avoiding for years."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--orange)">S</div>
+          <div>
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-role">Marketing Director, 34</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I didn't expect a tool like this to be this good. The follow-up questions caught me off guard — in a good way. It felt like a real conversation, not a quiz."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--cassis)">J</div>
+          <div>
+            <div class="testimonial-name">James T.</div>
+            <div class="testimonial-role">Software Engineer, 28</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I shared my result with my partner and we had one of the most honest conversations we've had in years. This asks the questions you avoid asking yourself."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--wasabi)">A</div>
+          <div>
+            <div class="testimonial-name">Ana L.</div>
+            <div class="testimonial-role">Freelance Designer, 31</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<section class="mid-cta-section">
+  <div class="wrap" style="text-align:center; padding-top:60px; padding-bottom:60px;">
+    <h2 class="section-h2">You already know something needs to change.</h2>
+    <p class="section-sub">This is where you start.</p>
+    <a href="/quiz" class="btn-primary" style="margin-top:8px;">
+      Find your Ikigai
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-h2">Questions you might have</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What is Ikigai?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Ikigai is a Japanese concept meaning "a reason for being." It sits at the intersection of four things: what you love, what you're good at, what the world needs, and what you can be paid for. When these four overlap, you've found the thing that gives your life direction and meaning.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How long does it take?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">About 10 minutes. There are 7 core questions, and the tool may ask 1–2 follow-ups depending on your answers. The more depth you give, the better your result.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What do I get at the end?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">A personalized Ikigai statement, a breakdown of your four dimensions (passion, vocation, mission, profession), an honest analysis of patterns in your answers, and practical suggestions for where to go from here. You can download your full result and share it.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can I retake it later?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes, as many times as you want. Retaking it after a few months can be a powerful way to see how your perspective has shifted. Download your result each time so you can compare.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What makes this different from other personality tests?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Most tests put you in a box with a label. This doesn't. Instead of telling you "you are Type X," it helps you articulate what you already know but haven't put into words. The analysis is based entirely on what you write — not multiple choice. And it adapts: if your answers need more depth, it asks follow-ups before generating your result.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta-section">
+  <div class="wrap">
+    <div class="final-cta-box">
+      <h2 class="final-cta-h2">Ready to find out?</h2>
+      <p class="final-cta-sub">10 minutes of honest reflection could change the way you see your career, your passions, and your next move.</p>
+      <a href="/quiz" class="btn-white">
+        Find what you were meant to do
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-      <div class="hero-meta">
-        <span>7–10 questions</span>
-        <span>~10 minutes</span>
-        <span>AI-powered analysis</span>
-      </div>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="intro-section">
-  <div class="wrap">
-    <div class="intro-inner">
-      <div class="section-title">Before we start,<br><span>read this</span></div>
-      <div class="rules">
-        <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Answer like you're talking to your best friend.</strong> No right or wrong answers. Nobody's judging. The more honest you are, the more useful the result.</div></div>
-        <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>If you don't know something, say so.</strong> But write the first thing that comes to mind. That instinctive answer often says more than a perfect one.</div></div>
-        <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>Context matters.</strong> This tool works better with depth. It's not about filling a form — it's about getting to know yourself a little better.</div></div>
-        <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>It might ask follow-up questions.</strong> If your answers need more context, the tool will dig deeper. That's normal.</div></div>
-      </div>
-      <button class="btn-primary" onclick="startQuiz()">
-        Let's go
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
+<div class="wrap">
+  <div class="footer">
+    <div class="footer-left">Found by Ikigai · 2026</div>
+    <div class="footer-dots">
+      <div class="footer-dot" style="background:#8B9E2A"></div>
+      <div class="footer-dot" style="background:#E55A2B"></div>
+      <div class="footer-dot" style="background:#9DB5D5"></div>
+      <div class="footer-dot" style="background:#9BAF9A"></div>
+      <div class="footer-dot" style="background:#7D1A45"></div>
     </div>
   </div>
-</section>
-
-<section id="quiz-section">
-  <div class="wrap">
-    <div class="quiz-inner">
-      <div class="progress-wrap">
-        <div class="progress-meta"><span id="progress-text">Question 1</span><span id="progress-pct">0%</span></div>
-        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-      </div>
-      <div id="questions-container"></div>
-    </div>
-  </div>
-</section>
-
-<section id="loading-section" style="display:none; min-height:100vh; padding-top:var(--nav-h); display:none; align-items:center; justify-content:center; flex-direction:column; gap:20px; text-align:center;">
-  <div class="loader-ring"></div>
-  <div class="loading-text" id="loading-text">Reading your answers</div>
-  <div class="loading-sub">This takes a few seconds...</div>
-</section>
-
-<section id="result-section">
-  <div class="wrap">
-    <div class="result-inner">
-      <div class="result-eyebrow">Your result</div>
-      <div class="result-h1">Your <span>Ikigai</span></div>
-      <div class="ikigai-phrase" id="ikigai-phrase">—</div>
-      <div class="ikigai-diagram"><div class="diagram-inner" id="diagram-inner"></div></div>
-      <div class="cards" id="result-cards"></div>
-      <div class="insight-block">
-        <div class="insight-label">Analysis</div>
-        <div class="insight-text" id="insight-text">Loading...</div>
-      </div>
-      <div class="nextsteps-block">
-        <div class="nextsteps-label">Where you could go from here</div>
-        <div id="nextsteps-list"></div>
-      </div>
-      <div class="actions-bar">
-        <button class="btn-action filled" onclick="shareLinkedIn()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-          Share on LinkedIn
-        </button>
-        <button class="btn-action outline" onclick="downloadResult()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download result
-        </button>
-      </div>
-      <div class="cta-block">
-        <div class="cta-title">Was this useful?</div>
-        <p class="cta-sub">If this helped you get a little more clarity, share it. Someone in your network is probably looking for the same thing.</p>
-        <div class="cta-buttons">
-          <button class="cta-btn primary" onclick="shareLinkedIn()">Share on LinkedIn</button>
-          <a href="https://foundbyikigai.com" target="_blank" class="cta-btn ghost">foundbyikigai.com</a>
-        </div>
-      </div>
-      <div class="signature">
-        <div>
-          <div class="sig-name">Found by Ikigai</div>
-          <div class="sig-sub">foundbyikigai.com · 2026</div>
-        </div>
-        <div class="sig-dots">
-          <div class="sig-dot" style="background:#8B9E2A"></div>
-          <div class="sig-dot" style="background:#E55A2B"></div>
-          <div class="sig-dot" style="background:#9DB5D5"></div>
-          <div class="sig-dot" style="background:#9BAF9A"></div>
-          <div class="sig-dot" style="background:#7D1A45"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <script>
-const baseQuestions = [
-  { id:'q1', category:'01 — What you love', text:'What activities make you lose track of time?', hint:"It's okay if you don't have a clear answer. Write the first thing that comes to mind. Answer like you're talking to your best friend." },
-  { id:'q2', category:'02 — What you love', text:'If money were no object, what would your ideal week look like?', hint:'Who would you be with, where, what would you do. Be as specific as you can.' },
-  { id:'q3', category:'03 — What you are good at', text:'What things come naturally to you?', hint:'No false modesty. Skills, ways of thinking, how you treat people. What others recognize in you or what you do effortlessly.' },
-  { id:'q4', category:'04 — What you are good at', text:'Who do you admire and what exactly do you admire about them?', hint:'Could be someone close or a public figure. Be specific about the why.' },
-  { id:'q5', category:'05 — What the world needs', text:'What things in the world bother or hurt you?', hint:'What do you see around you and think "someone should do something about that".' },
-  { id:'q6', category:'06 — What you can be paid for', text:'What have people paid you for, or would they pay you for?', hint:'Include everything even if you are not passionate about all of it.' },
-  { id:'q7', category:'07 — Your legacy', text:'How do you want to be remembered?', hint:"It doesn't have to be grand. What would the people who matter most to you say?" }
-];
-
-let allQuestions = [...baseQuestions];
-let answers = {};
-let currentIndex = 0;
-let resultData = null;
-
-function showIntro() {
-  document.getElementById('hero-section').style.display = 'none';
-  document.getElementById('intro-section').style.display = 'block';
-}
-
-function startQuiz() {
-  document.getElementById('intro-section').style.display = 'none';
-  document.getElementById('quiz-section').style.display = 'block';
-  renderQuestion(0);
-}
-
-function renderQuestion(index) {
-  const q = allQuestions[index];
-  const isLast = index === allQuestions.length - 1;
-  document.getElementById('questions-container').innerHTML = `
-    <div class="question-block">
-      <div class="q-category">${q.category}</div>
-      <div class="q-text">${q.text}</div>
-      <p class="q-hint">${q.hint}</p>
-      <textarea class="q-textarea" id="current-answer" placeholder="Write here..."></textarea>
-      <br><br>
-      <button class="btn-ghost" onclick="handleNext()">${isLast ? 'See my Ikigai →' : 'Next →'}</button>
-    </div>`;
-  const total = Math.max(allQuestions.length, 7);
-  const pct = Math.round((index / total) * 100);
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = 'Question ' + (index + 1);
-  document.getElementById('progress-pct').textContent = pct + '%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-async function handleNext() {
-  const val = document.getElementById('current-answer').value.trim();
-  if (!val) {
-    document.getElementById('current-answer').style.borderColor = 'var(--orange)';
-    document.getElementById('current-answer').placeholder = 'Write something, even if brief...';
-    return;
-  }
-  answers[allQuestions[currentIndex].id] = val;
-  currentIndex++;
-  if (currentIndex < allQuestions.length) {
-    renderQuestion(currentIndex);
-  } else {
-    await checkFollowUps();
-  }
-}
-
-const loadingMsgs = ['Reading your answers...','Finding patterns...','Connecting the dots...','Almost there...'];
-let loadingInterval;
-
-function showLoading() {
-  document.getElementById('quiz-section').style.display = 'none';
-  const ls = document.getElementById('loading-section');
-  ls.style.display = 'flex';
-  let i = 0;
-  loadingInterval = setInterval(() => { i=(i+1)%loadingMsgs.length; document.getElementById('loading-text').textContent = loadingMsgs[i]; }, 2200);
-}
-
-function hideLoading() {
-  clearInterval(loadingInterval);
-  document.getElementById('loading-section').style.display = 'none';
-}
-
-async function callClaude(prompt, maxTokens) {
-  const res = await fetch('/.netlify/functions/claude', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({ model:'claude-haiku-4-5-20251001', max_tokens:maxTokens||800, messages:[{role:'user',content:prompt}] })
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = '0';
   });
-  const data = await res.json();
-  return data.content.map(i=>i.text||'').join('').replace(/```json|```/g,'').trim();
+  if (!wasOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
 }
-
-async function checkFollowUps() {
-  showLoading();
-  const answersText = allQuestions.filter(q=>answers[q.id]).map(q=>`${q.text}\n"${answers[q.id]}"`).join('\n\n');
-  try {
-    const raw = await callClaude(`You are a facilitator helping someone find their Ikigai.
-RULES:
-- Ask follow-up when a key answer is very short (under 15 words), vague, or says "I don't know" without developing
-- Key questions: what they love, ideal week, legacy. If any answered with little detail, ALWAYS dig deeper
-- Do NOT re-ask what was already answered implicitly
-- Do NOT ask about trauma or sensitive topics
-- Max 2 follow-up questions, make them specific
-
-Answers:
-${answersText}
-
-Reply ONLY in JSON:
-{"needs_followup":false,"followup_questions":[]}
-or
-{"needs_followup":true,"followup_questions":[{"id":"fq1","category":"One more question","text":"specific question","hint":"why you are asking"}]}`, 400);
-    const parsed = JSON.parse(raw);
-    hideLoading();
-    if (parsed.needs_followup && parsed.followup_questions?.length) {
-      allQuestions = [...allQuestions, ...parsed.followup_questions];
-      document.getElementById('quiz-section').style.display = 'block';
-      renderQuestion(currentIndex);
-    } else { await generateResult(); }
-  } catch(e) { hideLoading(); await generateResult(); }
-}
-
-async function generateResult() {
-  showLoading();
-  const answersText = allQuestions.filter(q=>answers[q.id]).map(q=>`${q.text}\n"${answers[q.id]}"`).join('\n\n');
-  try {
-    const raw = await callClaude(`You are an honest, direct guide. Speak like a friend who tells the truth with respect. Natural English, no clichés.
-RULES: Base everything only on what the person wrote. Present unclear things as possibilities not certainties.
-
-Person's answers:
-${answersText}
-
-Reply ONLY in JSON:
-{
-  "ikigai_central": "Short phrase max 10 words in UPPERCASE",
-  "what_you_love": "2 specific sentences based on THEIR answers.",
-  "what_you_are_good_at": "2 sentences about their real strengths.",
-  "what_the_world_needs": "2 sentences about how their sensitivity connects with the world.",
-  "what_you_can_be_paid_for": "2 sentences about their real professional value.",
-  "insight": "4 paragraphs. Point out patterns they may not have noticed. Mention real tensions. Connect people they admire with who they aspire to be. End with ONE powerful question. No motivational clichés.",
-  "next_steps": ["practical suggestion 1 as an invitation", "suggestion 2", "suggestion 3", "suggestion 4"]
-}`, 1400);
-    resultData = JSON.parse(raw);
-    hideLoading();
-    renderResult(resultData);
-  } catch(e) { hideLoading(); renderResult(null); }
-}
-
-function renderDiagram(phrase) {
-  const inner = document.getElementById('diagram-inner');
+function renderLandingDiagram() {
+  const inner = document.getElementById('idl-inner');
+  if (!inner) return;
   const w = inner.offsetWidth || 300;
-  const h = w * 0.68;
+  const h = w * 0.75;
   inner.style.height = h + 'px';
   const r = Math.min(w,h) * 0.37;
   const cx = w/2, cy = h/2, off = r * 0.5;
   const circles = [
-    {x:cx-off,y:cy-off,color:'#E55A2B',label:'What you\nlove',lx:cx-off-r*0.9,ly:cy-off-r*0.78},
-    {x:cx+off,y:cy-off,color:'#9DB5D5',label:'What you\nare good at',lx:cx+off+r*0.15,ly:cy-off-r*0.78},
-    {x:cx-off,y:cy+off,color:'#7D1A45',label:'What the\nworld needs',lx:cx-off-r*0.9,ly:cy+off+r*0.52},
-    {x:cx+off,y:cy+off,color:'#9BAF9A',label:'What you can\nbe paid for',lx:cx+off+r*0.15,ly:cy+off+r*0.52},
+    {x:cx-off,y:cy-off,color:'#E55A2B',label:'What you<br>love',lx:cx-off-r*0.92,ly:cy-off-r*0.78},
+    {x:cx+off,y:cy-off,color:'#9DB5D5',label:'What you\'re<br>good at',lx:cx+off+r*0.16,ly:cy-off-r*0.78},
+    {x:cx-off,y:cy+off,color:'#7D1A45',label:'What the<br>world needs',lx:cx-off-r*0.92,ly:cy+off+r*0.55},
+    {x:cx+off,y:cy+off,color:'#9BAF9A',label:'What you can<br>be paid for',lx:cx+off+r*0.16,ly:cy+off+r*0.55},
   ];
   inner.innerHTML = circles.map(c=>`
-    <div class="ik-c" style="width:${r*2}px;height:${r*2}px;background:${c.color};top:${c.y-r}px;left:${c.x-r}px;"></div>
-    <div class="ik-lbl" style="top:${c.ly}px;left:${c.lx}px;width:${r*0.88}px;">${c.label.replace('\n','<br>')}</div>
-  `).join('') + `<div class="ik-center" style="top:${cy}px;left:${cx}px;">${phrase||'Your ikigai'}</div>`;
+    <div class="idl-c" style="width:${r*2}px;height:${r*2}px;background:${c.color};top:${c.y-r}px;left:${c.x-r}px;"></div>
+    <div class="idl-lbl" style="top:${c.ly}px;left:${c.lx}px;width:${r*0.88}px;">${c.label}</div>
+  `).join('') + `<div class="idl-center">Your Ikigai</div>`;
 }
-
-function renderResult(r) {
-  document.getElementById('result-section').style.display = 'block';
-  window.scrollTo({top:0,behavior:'smooth'});
-  if (!r) {
-    document.getElementById('ikigai-phrase').textContent = 'Your process';
-    setTimeout(()=>renderDiagram('Your answers'),100);
-    document.getElementById('insight-text').textContent = 'There was an error. But your answers already have value — read them slowly.';
-    document.getElementById('result-cards').innerHTML = '';
-    document.getElementById('nextsteps-list').innerHTML = '';
-    return;
-  }
-  document.getElementById('ikigai-phrase').textContent = r.ikigai_central;
-  setTimeout(()=>renderDiagram(r.ikigai_central),100);
-  const cards = [
-    {label:'What you love',title:'Passion',text:r.what_you_love},
-    {label:'What you are good at',title:'Vocation',text:r.what_you_are_good_at},
-    {label:'What the world needs',title:'Mission',text:r.what_the_world_needs},
-    {label:'What you can be paid for',title:'Profession',text:r.what_you_can_be_paid_for},
-  ];
-  document.getElementById('result-cards').innerHTML = cards.map(c=>`
-    <div class="card">
-      <div class="card-label">${c.label}</div>
-      <div class="card-title">${c.title}</div>
-      <div class="card-text">${c.text}</div>
-    </div>`).join('');
-  document.getElementById('insight-text').textContent = r.insight;
-  if (r.next_steps?.length) {
-    document.getElementById('nextsteps-list').innerHTML = r.next_steps.map((p,i)=>`
-      <div class="nextstep-item">
-        <div class="nextstep-num">${i+1}</div>
-        <div class="nextstep-text">${p}</div>
-      </div>`).join('');
-  }
-}
-
-function shareLinkedIn() {
-  const phrase = resultData ? resultData.ikigai_central : null;
-  const text = phrase
-    ? `I just found my Ikigai:\n\n"${phrase}"\n\nIf you want to find yours, this free tool helped me get clarity on the path I actually want to take.\n\nhttps://foundbyikigai.com`
-    : `If you feel like you're running on autopilot and want more clarity on your path, this free tool can help.\n\nhttps://foundbyikigai.com`;
-  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://foundbyikigai.com')}&summary=${encodeURIComponent(text)}`,'_blank');
-}
-
-function downloadResult() {
-  if (!resultData) return;
-  const answersText = allQuestions.filter(q=>answers[q.id]).map(q=>`${q.text}\n→ ${answers[q.id]}`).join('\n\n');
-  const steps = resultData.next_steps ? resultData.next_steps.map((p,i)=>`${i+1}. ${p}`).join('\n') : '';
-  const content = `FOUND BY IKIGAI\n${'='.repeat(40)}\n\nYOUR IKIGAI\n${resultData.ikigai_central}\n\n${'─'.repeat(40)}\n\nWHAT YOU LOVE\n${resultData.what_you_love}\n\nWHAT YOU ARE GOOD AT\n${resultData.what_you_are_good_at}\n\nWHAT THE WORLD NEEDS\n${resultData.what_the_world_needs}\n\nWHAT YOU CAN BE PAID FOR\n${resultData.what_you_can_be_paid_for}\n\n${'─'.repeat(40)}\n\nANALYSIS\n${resultData.insight}\n\n${'─'.repeat(40)}\n\nWHERE TO GO FROM HERE\n${steps}\n\n${'─'.repeat(40)}\n\nYOUR ANSWERS\n${answersText}\n\n${'─'.repeat(40)}\nfoundbyikigai.com`;
-  const blob = new Blob([content],{type:'text/plain;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'my-ikigai.txt';
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
+window.addEventListener('load', renderLandingDiagram);
+window.addEventListener('resize', renderLandingDiagram);
 </script>
 </body>
 </html>
