@@ -584,38 +584,29 @@ body{background:#FBF7EE;color:#1A1714;font-family:'Inter',sans-serif;overflow-x:
 </section>
 
 <script>
-/* ═══════ PADDLE INIT ═══════ */
-Paddle.Initialize({
-  token: 'live_8961e3d5d6b7b1e6ffb729c73b9'
-});
-
+/* ═══════ PADDLE INIT (v2 SDK) ═══════ */
 let hasPaid = false;
 
+Paddle.Initialize({
+  token: 'live_8961e3d5d6b7b1e6ffb729c73b9',
+  eventCallback: function(event) {
+    if (event.name === 'checkout.completed') {
+      hasPaid = true;
+      unlockFullResult();
+    }
+  }
+});
+
 function openPaddleCheckout() {
+  if (typeof Paddle === 'undefined' || !Paddle.Checkout) {
+    alert('Payment system is loading. Please try again in a moment.');
+    return;
+  }
   Paddle.Checkout.open({
     items: [{ priceId: 'pri_01m3t9menzy9cjhx429eg6bvy9', quantity: 1 }],
     settings: {
       displayMode: 'overlay',
-      theme: 'light',
-      successUrl: window.location.href
-    }
-  });
-}
-
-// Listen for checkout completion
-Paddle.Checkout && document.addEventListener('paddle:checkout.completed', function() {
-  hasPaid = true;
-  unlockFullResult();
-});
-
-// Also listen via Paddle events API
-if (typeof Paddle !== 'undefined' && Paddle.Setup) {
-  Paddle.Setup({
-    eventCallback: function(data) {
-      if (data.name === 'checkout.completed' || data.event === 'Checkout.Complete') {
-        hasPaid = true;
-        unlockFullResult();
-      }
+      theme: 'light'
     }
   });
 }
